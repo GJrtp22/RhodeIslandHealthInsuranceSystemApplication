@@ -10,6 +10,7 @@ public class RhisServiceRegistryApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(RhisServiceRegistryApplication.class, args);
+		//service registry
 	}
 
 }

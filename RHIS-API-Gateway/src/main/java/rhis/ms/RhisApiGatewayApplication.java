@@ -10,6 +10,7 @@ public class RhisApiGatewayApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(RhisApiGatewayApplication.class, args);
+		//routing and filter
 	}
 
 }

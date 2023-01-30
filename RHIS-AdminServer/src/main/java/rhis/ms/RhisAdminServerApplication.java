@@ -11,6 +11,7 @@ public class RhisAdminServerApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(RhisAdminServerApplication.class, args);
+		//admin server
 	}
 
 }
