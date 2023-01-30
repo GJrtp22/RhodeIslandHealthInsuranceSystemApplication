@@ -20,7 +20,7 @@ public class ApplicationRegistrationServiceImpl implements ApplicationRegistrati
 	@Override
 	public String registerCitizen(RegistrationCitizen registrationCitizen) {
 		
-		String apiUrl=ApplicationRegistrationConstants.SSAWEBURL+registrationCitizen.getSsn().toString();
+		String apiUrl=ApplicationRegistrationConstants.SSAWEBURL + registrationCitizen.getSsn().toString();
 		
 		WebClient client=WebClient.create();
 		
