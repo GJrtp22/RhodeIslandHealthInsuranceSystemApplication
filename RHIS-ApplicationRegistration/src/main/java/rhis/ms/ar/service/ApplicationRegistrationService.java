@@ -1,9 +1,10 @@
 package rhis.ms.ar.service;
 
-import rhis.ms.ar.entity.RegistrationCitizen;
+import rhis.ms.ar.bindings.Citizen;
+
 
 public interface ApplicationRegistrationService {
 	
-	String registerCitizen(RegistrationCitizen registrationCitizen);
+	String registerCitizen(Citizen citizen);
 
 }
