@@ -1,5 +1,7 @@
 package rhis.ms.ar.service;
 
+import java.util.Optional;
+
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,16 +22,16 @@ public class ApplicationRegistrationServiceImpl implements ApplicationRegistrati
 	private RegistrationCitizenRepo registrationCitizenRepo;
 
 	@Override
-	public String registerCitizen(Citizen  citizen) {
+	public String registerCitizen(Citizen citizen) {
 
 		WebClient client = WebClient.create();
 
-		String stateName = client.get().uri(ApplicationRegistrationConstants.SSAWEBURL, citizen.getSsn())
-				.retrieve().bodyToMono(String.class).block();
+		String stateName = client.get().uri(ApplicationRegistrationConstants.SSAWEBURL, citizen.getSsn()).retrieve()
+				.bodyToMono(String.class).block();
 
 		if (ApplicationRegistrationConstants.RHODEISLANDSSN.equalsIgnoreCase(stateName)) {
-			
-			RegistrationCitizenEntity entity=new RegistrationCitizenEntity();
+
+			RegistrationCitizenEntity entity = new RegistrationCitizenEntity();
 			BeanUtils.copyProperties(citizen, entity);
 			entity = registrationCitizenRepo.save(entity);
 			if (entity != null) {
@@ -40,6 +42,16 @@ public class ApplicationRegistrationServiceImpl implements ApplicationRegistrati
 
 		return ApplicationRegistrationConstants.NONELIGIBLEMESSAGE;
 
+	}
+
+	@Override
+	public Long searchAppId(Long appId) {
+		Optional<RegistrationCitizenEntity> findById = registrationCitizenRepo.findById(appId);
+		if (findById.isPresent()) {
+			return findById.get().getAppId();
+		}
+
+		return null;
 	}
 
 }
