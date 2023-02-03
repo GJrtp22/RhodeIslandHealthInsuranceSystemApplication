@@ -1,0 +1,4 @@
+1. generateCaseNumberByAppId: AppId should be searched in tbale, 
+			     if it presents then create case number and store in case table
+
+Use Fiegnclient to search the appId in citizen table.

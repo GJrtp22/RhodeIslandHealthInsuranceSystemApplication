@@ -8,20 +8,18 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
-@Entity
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
-public class PlanSelection {
+@Entity
+public class IncomeData {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer planId;
-	private String planName;
+	private Integer incomeId;
+	private Double monthlySalaryIncome;
+	private Double rentIncome;
+	private Double propertyIncome;
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="case_id")

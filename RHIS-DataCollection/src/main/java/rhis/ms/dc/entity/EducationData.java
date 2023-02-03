@@ -8,20 +8,18 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
-@Entity
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
-public class PlanSelection {
+@Entity
+public class EducationData {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer planId;
-	private String planName;
+	private Integer educationId;
+	private String highestDegree;
+	private String graduationYear;
+	private String universityName;
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="case_id")
