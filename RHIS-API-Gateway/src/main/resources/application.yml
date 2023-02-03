@@ -12,6 +12,10 @@ spring:
          uri: lb://AR-API
          predicates: 
           - Path=/ar
+       - id: dc-api
+         uri: lb://DC-API
+         predicates: 
+          - Path=/dc
   application:
     name: CLOUD-GATEWAY-API 
   main:
