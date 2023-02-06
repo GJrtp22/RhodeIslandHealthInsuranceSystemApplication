@@ -1,24 +1,28 @@
 package rhis.ms.dc.service;
 
 import rhis.ms.dc.bindings.DataCollectionSummary;
+import rhis.ms.dc.bindings.Education;
+import rhis.ms.dc.bindings.Income;
+import rhis.ms.dc.bindings.KidsInfo;
+import rhis.ms.dc.bindings.PlanSelection;
 import rhis.ms.dc.entity.EducationData;
 import rhis.ms.dc.entity.IncomeData;
 import rhis.ms.dc.entity.KidsData;
-import rhis.ms.dc.entity.PlanSelection;
+
 
 public interface DataCollectionService {
 	
-	Long generateCaseNumberByAppId(Long appId);
+	public PlanSelection generateCaseNumberByAppId(Long appId);
 	
-	boolean savePlanDetails(PlanSelection planSelection);
+	public Long updateCitizenPlan(PlanSelection planSelection);
 	
-	boolean saveIncomeDetails(IncomeData incomeData);
+	Long saveIncomeDetails(Income income);
 	
-	boolean saveEducationDetails(EducationData educationData);
+	Long saveEducationDetails(Education education);
 	
-	boolean saveKidsDetails(KidsData kidsData);
+	DataCollectionSummary saveKidsDetails(KidsInfo kidsInfo);
 	
-	DataCollectionSummary getAllDetails(Long caseNumber);
+	 
 	
 	
 	

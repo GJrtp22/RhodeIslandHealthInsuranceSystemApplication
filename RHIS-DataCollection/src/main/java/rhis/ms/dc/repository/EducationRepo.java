@@ -10,7 +10,6 @@ import rhis.ms.dc.entity.EducationData;
 
 public interface EducationRepo extends JpaRepository<EducationData, Integer>{
 	
-	@Query(" * FROM EducationData where caseNumber=: caseId")
-	public EducationData getEduactionDetails(Long caseId);
+	public EducationData findByCaseNumber(Long caseNumber);
 
 }

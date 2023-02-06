@@ -1,5 +1,7 @@
 package rhis.ms.dc.repository;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -8,7 +10,6 @@ import rhis.ms.dc.entity.KidsData;
 
 public interface KidsRepo extends JpaRepository<KidsData, Integer> {
 	
-	@Query(" * FROM KidsData where caseNumber=: caseId")
-	public KidsData getIncomeDetails(Long caseId);
+	public List<KidsData>  findByCaseNumber(Long caseNumber);
 
 }

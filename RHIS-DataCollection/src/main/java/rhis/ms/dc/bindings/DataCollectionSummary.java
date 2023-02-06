@@ -5,22 +5,18 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-@Data
+
 @NoArgsConstructor
-@AllArgsConstructor
+@Data
 @ToString
 public class DataCollectionSummary {
 	
-	private Long caseNumber;
+	private String fname;
+	private Long ssn;
 	private String planName;
-	private Double monthlySalaryIncome;
-	private Double rentIncome;
-	private Double propertyIncome;
-	private String highestDegree;
-	private String graduationYear;
-	private String universityName;
-	private String kidName;
-	private Integer kidAge;
-	private Long kidSsn;
+	
+	private Income income;
+	private Education educationInfo;
+	private KidsInfo kidsInfo;
 
 }

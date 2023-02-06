@@ -23,6 +23,6 @@ public class IncomeData {
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="case_id")
-	private Case caseNumber;
+	private Long caseNumber;
 
 }

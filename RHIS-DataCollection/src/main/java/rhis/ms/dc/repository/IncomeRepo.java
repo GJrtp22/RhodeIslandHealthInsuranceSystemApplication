@@ -8,7 +8,7 @@ import rhis.ms.dc.entity.IncomeData;
 
 public interface IncomeRepo extends JpaRepository<IncomeData, Integer> {
 	
-	@Query(" * FROM IncomeData where caseNumber=: caseId")
-	public IncomeData getIncomeDetails(Long caseId);
+	
+	public IncomeData findByCaseNumber(Long caseNumber);
 
 }
