@@ -12,17 +12,17 @@ import lombok.Data;
 
 @Data
 @Entity
-public class EducationData {
+public class IncomeDataEntity {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer educationId;
-	private String highestDegree;
-	private String graduationYear;
-	private String universityName;
+	private Integer incomeId;
+	private Double monthlySalaryIncome;
+	private Double rentIncome;
+	private Double propertyIncome;
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="case_id")
-	private Case caseNumber;
+	private CaseEntity caseNumber;
 
 }

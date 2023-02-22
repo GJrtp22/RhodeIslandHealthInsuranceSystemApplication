@@ -4,12 +4,14 @@ package rhis.ms.dc.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
 
 
-import rhis.ms.dc.entity.EducationData;
+import rhis.ms.dc.entity.EducationDataEntity;
 
-public interface EducationRepo extends JpaRepository<EducationData, Integer>{
+@Repository
+public interface EducationRepo extends JpaRepository<EducationDataEntity, Integer>{
 	
-	public EducationData findByCaseNumber(Long caseNumber);
+	public EducationDataEntity findByCaseNumber(Long caseNumber);
 
 }

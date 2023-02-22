@@ -7,6 +7,16 @@ spring:
     admin:
       client:
         url: http://localhost:8081/
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/rhis
+    username: root
+    password: Password123^
+  
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
 eureka:
   client:
     service-url:

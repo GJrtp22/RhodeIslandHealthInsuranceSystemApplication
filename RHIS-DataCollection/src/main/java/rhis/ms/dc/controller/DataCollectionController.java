@@ -15,9 +15,7 @@ import rhis.ms.dc.bindings.DataCollectionSummary;
 import rhis.ms.dc.bindings.Education;
 import rhis.ms.dc.bindings.Income;
 import rhis.ms.dc.bindings.KidsInfo;
-import rhis.ms.dc.entity.EducationData;
-import rhis.ms.dc.entity.IncomeData;
-import rhis.ms.dc.entity.KidsData;
+
 
 import rhis.ms.dc.repository.PlanSelectionRepo;
 import rhis.ms.dc.service.DataCollectionService;

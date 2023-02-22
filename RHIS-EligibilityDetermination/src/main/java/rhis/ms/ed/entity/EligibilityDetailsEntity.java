@@ -1,4 +1,4 @@
-package rhis.ms.ed.entity;
+ package rhis.ms.ed.entity;
 
 import java.time.LocalDate;
 import java.util.Date;

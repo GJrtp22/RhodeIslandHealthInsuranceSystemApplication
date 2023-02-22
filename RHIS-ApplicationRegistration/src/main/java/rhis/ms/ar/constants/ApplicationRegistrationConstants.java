@@ -1,5 +1,8 @@
 package rhis.ms.ar.constants;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class ApplicationRegistrationConstants {
 	
 	public static final String RHODEISLANDSSN="Rhode Island";

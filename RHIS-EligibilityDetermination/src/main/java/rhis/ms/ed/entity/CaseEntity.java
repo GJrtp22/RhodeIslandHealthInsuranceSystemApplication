@@ -14,6 +14,7 @@ import org.hibernate.annotations.GeneratorType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import rhis.ms.ed.entity.PlanSelectionEntity;
 
 @Entity
 @Data
@@ -29,7 +30,7 @@ public class CaseEntity {
 	
 	@OneToOne
 	@JoinColumn(name="fk_planmaster_id")
-	private Long planId;
+	private PlanSelectionEntity planId;
 	private Long appId;
 
 }

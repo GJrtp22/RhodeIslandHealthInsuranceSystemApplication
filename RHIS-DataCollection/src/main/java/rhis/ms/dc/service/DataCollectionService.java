@@ -1,15 +1,18 @@
 package rhis.ms.dc.service;
 
+import org.springframework.stereotype.Service;
+
 import rhis.ms.dc.bindings.DataCollectionSummary;
 import rhis.ms.dc.bindings.Education;
 import rhis.ms.dc.bindings.Income;
 import rhis.ms.dc.bindings.KidsInfo;
 import rhis.ms.dc.bindings.PlanSelection;
-import rhis.ms.dc.entity.EducationData;
-import rhis.ms.dc.entity.IncomeData;
-import rhis.ms.dc.entity.KidsData;
+import rhis.ms.dc.entity.EducationDataEntity;
+import rhis.ms.dc.entity.IncomeDataEntity;
+import rhis.ms.dc.entity.PlanSelectionEntity;
 
 
+@Service
 public interface DataCollectionService {
 	
 	public PlanSelection generateCaseNumberByAppId(Long appId);

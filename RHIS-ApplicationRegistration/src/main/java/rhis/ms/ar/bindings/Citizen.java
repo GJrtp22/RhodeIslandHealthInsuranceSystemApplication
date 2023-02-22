@@ -2,9 +2,12 @@ package rhis.ms.ar.bindings;
 
 import java.util.Date;
 
+import org.springframework.stereotype.Component;
+
 import lombok.Data;
 
 @Data
+@Component
 public class Citizen {
 	
 	private String fullName;

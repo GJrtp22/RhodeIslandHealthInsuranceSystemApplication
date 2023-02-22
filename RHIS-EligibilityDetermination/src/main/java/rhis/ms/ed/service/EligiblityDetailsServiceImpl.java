@@ -8,6 +8,7 @@ import java.util.Optional;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import rhis.ms.ed.bindings.EligibilityDetails;
 import rhis.ms.ed.entity.CaseEntity;
@@ -27,6 +28,7 @@ import rhis.ms.ed.repository.IncomeRepo;
 import rhis.ms.ed.repository.KidsRepo;
 import rhis.ms.ed.repository.PlanSelectionRepo;
 
+@Service
 public class EligiblityDetailsServiceImpl implements EligibilityDetailsService {
 
 	@Autowired

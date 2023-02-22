@@ -16,10 +16,12 @@ import rhis.ms.dc.bindings.Education;
 import rhis.ms.dc.bindings.Income;
 import rhis.ms.dc.bindings.KidData;
 import rhis.ms.dc.bindings.KidsInfo;
-import rhis.ms.dc.entity.Case;
-import rhis.ms.dc.entity.EducationData;
-import rhis.ms.dc.entity.IncomeData;
-import rhis.ms.dc.entity.KidsData;
+
+import rhis.ms.dc.entity.CaseEntity;
+
+import rhis.ms.dc.entity.EducationDataEntity;
+import rhis.ms.dc.entity.IncomeDataEntity;
+import rhis.ms.dc.entity.KidsDataEntity;
 import rhis.ms.dc.entity.PlanSelectionEntity;
 import rhis.ms.dc.entity.RegistrationCitizenEntity;
 import rhis.ms.dc.fiegnclientcommunication.ARClient;
@@ -31,7 +33,7 @@ import rhis.ms.dc.repository.KidsRepo;
 import rhis.ms.dc.repository.PlanSelectionRepo;
 
 @Service
-public class DataCollectionServiceImpl implements DataCollectionService {
+public class DataCollectionServiceImpl<incomeRepo> implements DataCollectionService {
 
 	@Autowired
 	private ARClient arClient;
@@ -62,7 +64,7 @@ public class DataCollectionServiceImpl implements DataCollectionService {
 		if(findById.isPresent())
 		{
 			//create case
-			Case entity=new Case();
+			CaseEntity entity=new CaseEntity();
 			entity.setAppId(appId);
 			entity = caseRepo.save(entity);
 			
@@ -90,13 +92,13 @@ public class DataCollectionServiceImpl implements DataCollectionService {
 	@Override
 	public Long updateCitizenPlan(PlanSelection planSelection) {
 		Long caseNumber = planSelection.getCaseNumber();
-		Long planId = planSelection.getPlanId();
+		//Long planId = planSelection.getPlanId();
 		
-		Optional<Case> findById = caseRepo.findById(caseNumber);
+		Optional<CaseEntity> findById = caseRepo.findById(caseNumber);
 		if(findById.isPresent())
 		{
-			Case caseData = findById.get();
-			caseData.setPlanId(planId);
+			CaseEntity caseData = findById.get();
+			//caseData.setPlanId(null);
 			caseRepo.save(caseData);
 		}
 		return caseNumber;
@@ -104,19 +106,19 @@ public class DataCollectionServiceImpl implements DataCollectionService {
 	@Override
 	public Long saveIncomeDetails(Income income) {
 		
-		IncomeData entity=new IncomeData();
+		IncomeDataEntity entity=new IncomeDataEntity();
 		BeanUtils.copyProperties(income, entity);
 		incomeRepo.save(entity);
-		return income.getCaseNumber();
+		return entity.getCaseNumber().getCaseNumber();
 	}
 	@Override
 	public Long saveEducationDetails(Education education) {
 		
-		EducationData entity=new EducationData();
+		EducationDataEntity entity=new EducationDataEntity();
 		BeanUtils.copyProperties(education, entity);
 		educationRepo.save(entity);
 		
-		return education.getCaseNumber();
+		return entity.getCaseNumber().getCaseNumber();
 	}
 	@Override
 	public DataCollectionSummary saveKidsDetails(KidsInfo kidsInfo) {
@@ -124,12 +126,12 @@ public class DataCollectionServiceImpl implements DataCollectionService {
 		
 		List<KidData> kidsDetails = kidsInfo.getKidsDetails();
 		
-		List<KidsData> kidsEntities=new ArrayList<>();
+		List<KidsDataEntity> kidsEntities=new ArrayList<>();
 		
 		kidsDetails.forEach(kid -> {
-			KidsData entity=new KidsData();
+			KidsDataEntity entity=new KidsDataEntity();
 			BeanUtils.copyProperties(kid, entity);
-			entity.setCaseNumber(caseNumber);		
+			//entity.setCaseNumber(caseNumber);		
 			kidsEntities.add(entity);
 		});
 		
@@ -138,17 +140,17 @@ public class DataCollectionServiceImpl implements DataCollectionService {
 		
 		
 		
-		return  null;
+		return  getSummary(caseNumber);
 	}
 	
 	private DataCollectionSummary getSummary(Long caseNumber)
 	{
-		Optional<Case> dcCase = caseRepo.findById(caseNumber);
-		Case caseEntity= dcCase.get();
-		Long planId = caseEntity.getPlanId();
+		Optional<CaseEntity> dcCase = caseRepo.findById(caseNumber);
+		CaseEntity caseEntity= dcCase.get();
+		PlanSelectionEntity planIdRec = caseEntity.getPlanId();
 		Long appId = caseEntity.getAppId();
 		
-		Optional<PlanSelectionEntity> dcPlan = planSelectionRepo.findById(planId);
+		Optional<PlanSelectionEntity> dcPlan = planSelectionRepo.findById(planIdRec.getPlanId());
 		String planName = dcPlan.get().getPlanName();
 		
 		Optional<RegistrationCitizenEntity> citizen = citizenRepo.findById(appId);
@@ -157,9 +159,9 @@ public class DataCollectionServiceImpl implements DataCollectionService {
 		
 		
 		
-		IncomeData income = incomeRepo.findByCaseNumber(caseNumber);
-		EducationData education = educationRepo.findByCaseNumber(caseNumber);
-		List<KidsData> kids = kidsRepo.findByCaseNumber(caseNumber);
+		IncomeDataEntity income = incomeRepo.findByCaseNumber(caseNumber);
+		EducationDataEntity education = educationRepo.findByCaseNumber(caseNumber);
+		List<KidsDataEntity> kids = kidsRepo.findByCaseNumber(caseNumber);
 		
 		
 		DataCollectionSummary summary=new DataCollectionSummary();

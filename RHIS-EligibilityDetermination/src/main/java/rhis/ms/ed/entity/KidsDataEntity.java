@@ -23,6 +23,6 @@ public class KidsDataEntity {
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="case_id")
-	private Long caseNumber;
+	private CaseEntity caseNumber;
 
 }

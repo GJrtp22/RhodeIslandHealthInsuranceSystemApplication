@@ -14,13 +14,14 @@ import org.hibernate.annotations.GeneratorType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import rhis.ms.dc.entity.PlanSelectionEntity;
 
 @Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name="DC_CASES")
-public class Case {
+public class CaseEntity {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,7 +30,7 @@ public class Case {
 	
 	@OneToOne
 	@JoinColumn(name="fk_planmaster_id")
-	private Long planId;
+	private PlanSelectionEntity planId;
 	private Long appId;
 
 }

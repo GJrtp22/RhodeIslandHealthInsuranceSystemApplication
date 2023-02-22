@@ -4,12 +4,14 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
 
-import rhis.ms.dc.entity.IncomeData;
-import rhis.ms.dc.entity.KidsData;
 
-public interface KidsRepo extends JpaRepository<KidsData, Integer> {
+import rhis.ms.dc.entity.KidsDataEntity;
+
+@Repository
+public interface KidsRepo extends JpaRepository<KidsDataEntity, Integer> {
 	
-	public List<KidsData>  findByCaseNumber(Long caseNumber);
+	public List<KidsDataEntity>  findByCaseNumber(Long caseNumber);
 
 }
